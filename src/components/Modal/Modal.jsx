@@ -20,7 +20,7 @@ const Modal = ({ children }) => {
         }}
       >
         {children}
-        {console.log('modal')}
+        {/* {console.log('modal')} */}
       </div>
     </div>
   );

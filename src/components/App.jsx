@@ -41,7 +41,7 @@ export class App extends Component {
 
   onChange = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-    console.log(this.state.queue);
+    // console.log(this.state.queue);
   };
 
   onClick = () => {
@@ -52,7 +52,7 @@ export class App extends Component {
 
   onImageClick = e => {
     this.setState({ idx: e.currentTarget.name });
-    console.log(e.currentTarget.name);
+    // console.log(e.currentTarget.name);
     this.openeModal();
   };
 
