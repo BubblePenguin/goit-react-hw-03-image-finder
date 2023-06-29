@@ -66,8 +66,9 @@ export class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     setTimeout(() => {
-      if (prevState.page !== this.state.page) this.getPhotos();
-      if (this.state.loading) this.getPhotos();
+      if (this.state.loading) {
+        this.getPhotos();
+      } else if (prevState.page !== this.state.page) this.getPhotos();
     }, 100);
   }
 
