@@ -1,17 +1,10 @@
+import css from './ImageGallery.module.css';
+import PropTypes from 'prop-types';
+
 const ImageGallery = ({ photos = [], onClick, children }) => {
   return (
     <>
-      <ul
-        className="gallery"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr 1fr',
-
-          gap: 10,
-          listStyle: 'none',
-          padding: 0,
-        }}
-      >
+      <ul className={css.gallery}>
         {photos &&
           photos.hits.map((i, idx) => (
             <ImageGalleryItem
@@ -31,17 +24,30 @@ const ImageGallery = ({ photos = [], onClick, children }) => {
 const ImageGalleryItem = ({ src, alt, onClick, idx }) => {
   return (
     <>
-      <li className="gallery-item">
+      <li>
         <img
+          className={css.gallery_item}
           src={src}
           alt={alt}
           onClick={onClick}
-          style={{ width: '100%', height: '25vh', objectFit: 'cover' }}
           name={idx}
         />
       </li>
     </>
   );
+};
+
+ImageGallery.propTypes = {
+  photos: PropTypes.object,
+  onClick: PropTypes.func,
+  children: PropTypes.object,
+};
+
+ImageGalleryItem.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string,
+  onClick: PropTypes.func,
+  idx: PropTypes.number,
 };
 
 export default ImageGallery;

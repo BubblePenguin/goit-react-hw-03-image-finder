@@ -4,7 +4,6 @@ import Loader from './EverythingElse/Loader';
 import Button from './EverythingElse/Button';
 import { Component } from 'react';
 import axios from 'axios';
-// import Modal from './Modal/Modal';
 import Modal from 'react-modal';
 
 export class App extends Component {
@@ -41,7 +40,6 @@ export class App extends Component {
 
   onChange = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-    // console.log(this.state.queue);
   };
 
   onClick = () => {
@@ -52,7 +50,6 @@ export class App extends Component {
 
   onImageClick = e => {
     this.setState({ idx: e.currentTarget.name });
-    // console.log(e.currentTarget.name);
     this.openeModal();
   };
 
@@ -79,22 +76,24 @@ export class App extends Component {
   }
 
   render() {
+    const { queue, loading, photos, modalShow } = this.state;
     return (
       <>
         <div style={{ margin: '0 40px' }}>
           <Searchbar
             onChange={this.onChange}
-            queue={this.state.queue}
+            queue={queue}
             onSubmit={this.onSubmit}
           />
-          <ImageGallery photos={this.state.photos} onClick={this.onImageClick}>
-            <Button text="Next Page" onClick={this.onClick} />
+          <ImageGallery photos={photos} onClick={this.onImageClick}>
+            <Button text="Next Page" onClick={this.onClick} visible={photos} />
           </ImageGallery>
         </div>
-        <Modal isOpen={this.state.loading}>
+        {Modal.setAppElement('#root')}
+        <Modal isOpen={loading}>
           <Loader />
         </Modal>
-        <Modal isOpen={this.state.modalShow} onRequestClose={this.closeModal}>
+        <Modal isOpen={modalShow} onRequestClose={this.closeModal}>
           {this.getBigImg()}
         </Modal>
       </>

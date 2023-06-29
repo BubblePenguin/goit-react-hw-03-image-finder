@@ -1,4 +1,5 @@
-import css from './Searchbar.css';
+import css from './Searchbar.module.css';
+import PropTypes from 'prop-types';
 
 const Searchbar = ({ onSubmit, onChange, queue }) => {
   return (
@@ -21,6 +22,12 @@ const Searchbar = ({ onSubmit, onChange, queue }) => {
       </form>
     </header>
   );
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
+  queue: PropTypes.string,
 };
 
 export default Searchbar;
