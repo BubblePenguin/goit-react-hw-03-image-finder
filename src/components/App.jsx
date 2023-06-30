@@ -79,7 +79,7 @@ export class App extends Component {
     const { queue, loading, photos, modalShow } = this.state;
     return (
       <>
-        <div style={{ margin: '0 40px' }}>
+        <div>
           <Searchbar
             onChange={this.onChange}
             queue={queue}
@@ -90,10 +90,14 @@ export class App extends Component {
           </ImageGallery>
         </div>
         {Modal.setAppElement('#root')}
-        <Modal isOpen={loading}>
+        <Modal isOpen={loading} style={{ overlay: { zIndex: 1200 } }}>
           <Loader />
         </Modal>
-        <Modal isOpen={modalShow} onRequestClose={this.closeModal}>
+        <Modal
+          isOpen={modalShow}
+          onRequestClose={this.closeModal}
+          style={{ overlay: { zIndex: 1200 } }}
+        >
           {this.getBigImg()}
         </Modal>
       </>
