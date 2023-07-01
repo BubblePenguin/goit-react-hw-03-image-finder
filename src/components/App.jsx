@@ -72,7 +72,18 @@ export class App extends Component {
   getBigImg() {
     if (!this.state.photos) return;
     const img = this.state.photos.hits[this.state.idx];
-    return <img src={img.largeImageURL} alt={img.tags} />;
+    return (
+      <img
+        src={img.largeImageURL}
+        alt={img.tags}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
+          overflow: 'hidden',
+        }}
+      />
+    );
   }
 
   render() {
