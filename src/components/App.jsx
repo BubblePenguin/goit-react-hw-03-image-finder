@@ -172,10 +172,10 @@ export default function App() {
         src={img.largeImageURL}
         alt={img.tags}
         style={{
-          width: '100%',
-          height: '100%',
+          width: '95%',
+          height: '95%',
           objectFit: 'contain',
-          overflow: 'hidden',
+          // overflow: 'hidden',
         }}
       />
     );
