@@ -134,13 +134,13 @@ export default function App() {
     setLoading(true);
   };
 
-  const getPhotos = () => {
-    axios
-      .get(link + '&q=' + queue.trim() + '&page=' + page)
-      .then(res => res.data)
-      .then(d => setPhotos(d))
-      .finally(setLoading(false));
-  };
+  // const getPhotos = () => {
+  //   axios
+  //     .get(link + '&q=' + queue.trim() + '&page=' + page)
+  //     .then(res => res.data)
+  //     .then(d => setPhotos(d))
+  //     .finally(setLoading(false));
+  // };
 
   const onChange = e => {
     switch (e.currentTarget.name) {
@@ -183,9 +183,15 @@ export default function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      if (loading) getPhotos();
+      if (loading) {
+        axios
+          .get(link + '&q=' + queue.trim() + '&page=' + page)
+          .then(res => res.data)
+          .then(d => setPhotos(d))
+          .finally(setLoading(false));
+      }
     }, 100);
-  }, [page, loading]);
+  }, [page, loading, queue]);
 
   return (
     <>
